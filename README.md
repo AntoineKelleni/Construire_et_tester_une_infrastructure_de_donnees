@@ -1,3 +1,7 @@
+<p style="text-align: center;">
+  <img src="logo_OCR.jpg" alt="Logo Academy" width="100">
+</p>
+
 # README Construire et tester une infrastructure de données
 ## Étape 1 – Préparation, nettoyage et normalisation des données météo
 
@@ -223,4 +227,5 @@ python src\transform_to_mongo_json.py
       2	Fichier stations_all.json créé	
       3	Fichier mongo_ready_measurements.json généré	
       4	Résumé console sans erreur	
+
       5	Unités cohérentes (°C, km/h, hPa, mm)	
