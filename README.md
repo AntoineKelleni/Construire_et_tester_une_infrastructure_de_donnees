@@ -1,7 +1,3 @@
-<p style="text-align: center;">
-  <img src="logo_OCR.jpg" alt="Logo Academy" width="100">
-</p>
-
 # README Construire et tester une infrastructure de données
 ## Étape 1 – Préparation, nettoyage et normalisation des données météo
 
@@ -53,12 +49,12 @@ Version utilisée : Python 3.11
 
 ##  Installation de l’environnement
 ### Créer et activer l’environnement virtuel
-```
+```bash
 python -m venv .venv #création dossier ".venv"
 .venv\Scripts\Activate.ps1 #active le venv
 ```
 ### Installer les dépendances
-```
+```bash
 pip install -r requirements.txt
 ```
 ### fichier requirements.txt
@@ -190,11 +186,11 @@ Date
 
 Exemple d’entrée (extrait JSONL) S3 du fichier data\brut_JSONL_bucket_S3\greencoop_JSON_source.jsonl
 
-```
+```bash
 {"id_station":"07015","dh_utc":"2024-10-05 16:00:00","temperature":"14.9","pression":"1014.5","humidite":"61","point_de_rosee":"7.4","visibilite":"19000","vent_moyen":"14.4","vent_rafales":"21.6","vent_direction":"100","pluie_3h":null,"pluie_1h":"0","neige_au_sol":null,"nebulosite":"","temps_omm":null}
 ```
 Exemple de sortie normalisée
-```
+```bash
 {
     "id_station": "07015",
     "dh_utc": "2024-10-05 00:00:00",
@@ -227,5 +223,47 @@ python src\transform_to_mongo_json.py
       2	Fichier stations_all.json créé	
       3	Fichier mongo_ready_measurements.json généré	
       4	Résumé console sans erreur	
-
       5	Unités cohérentes (°C, km/h, hPa, mm)	
+
+## Étape 2 – Migration MongoDB — Script tout-en-un
+
+Le script Python "src\migrate_to_mongo.py" qui **crée la base**, **importe les données** et **mesure la qualité post-migration** (taux d’erreurs).
+
+##  Fichiers
+- `migrate_to_mongo.py` — script principal
+- `flowchart_migration.mmd` — logigramme Mermaid (collez-le dans votre README GitHub pour rendu automatique)
+
+##  Prérequis
+- MongoDB local en cours d’exécution (`mongodb://localhost:27017` par défaut)
+- Un venv activé avec :
+  ```bash
+  pip install -r requirements.txt
+  ```
+
+## Exécution
+Depuis la racine du projet :
+```bash
+python migrate_to_mongo.py   --stations "data/clean/stations_all.json"   --measurements "data/clean/mongo_ready_measurements.json"   --report "data/reports/mongo_quality_report.json"
+```
+
+Variables d’environnement possibles :
+```bash
+set MONGO_URI="mongodb://localhost:27017"
+set DB_NAME="weather_db"
+```
+
+##  Ce que fait le script
+1. Crée les collections `stations` et `measurements` 
+2. Crée les index :
+   - `stations.id` **unique**
+   - `measurements.(id_station, dh_utc)` **unique**
+3. Importe les 2 fichiers JSON *format tableau* (`--jsonArray` requis si vous utilisez `mongoimport` à la main).
+4. Calcule un **rapport de qualité** et l’écrit dans `data/reports/mongo_quality_report.json` :
+   - **taux d’erreurs** global = nb docs non conformes / total
+   - complétude des champs requis (`id_station`, `dh_utc`, `DateTime`)
+   - doublons logiques (paire `id_station` + `dh_utc`)
+   - valeurs hors bornes (température, humidité, pression, vent)
+   - couverture référentielle (mesures qui pointent vers une station connue)
+
+##  Logigramme (Mermaid)
+Voir `Logigramme_migration.png`.
