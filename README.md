@@ -1,3 +1,7 @@
+<p style="text-align: center;">
+  <img src="logo_OCR.jpg" alt="Logo Academy" width="100">
+</p>
+
 # README Construire et tester une infrastructure de données
 ## Étape 1 – Préparation, nettoyage et normalisation des données météo
 
