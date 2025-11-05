@@ -152,6 +152,62 @@ Commande PowerShell
 ```
 python src\generate_stations_all_from_s3.py
 ```
+### Dictionnaire de données – Base MongoDB weather_db
+### Collection stations
+
+Cette collection contient les métadonnées descriptives des stations météorologiques.
+Chaque document représente une station unique, avec ses coordonnées géographiques et ses informations de licence.
+
+'''
+Champ	Type	Description
+_id	ObjectId	Identifiant unique généré par MongoDB
+id	String	Identifiant officiel de la station (ex. : "00052")
+name	String	Nom de la station (ex. : "Armentières")
+latitude	Float	Latitude géographique de la station
+longitude	Float	Longitude géographique de la station
+elevation	Integer	Altitude de la station en mètres
+type	String	Type de station (ex. : "static")
+source	String	Source des données (ex. : "infoclimat.fr")
+metadonnees	String	URL vers les métadonnées de la station
+license	Objet	Détail de la licence d’utilisation
+license.license	String	Type de licence (ex. : "CC BY")
+license.url	String	Lien vers le texte de la licence
+'''
+
+### Collection measurements
+
+Cette collection contient les mesures météorologiques horodatées collectées par les stations.
+Chaque document correspond à une observation météo pour une station donnée et une heure précise.
+
+'''
+Champ	Type	Description
+_id	ObjectId	Identifiant unique MongoDB
+id_station	String	Identifiant de la station émettrice de la mesure
+dh_utc	String	Date/heure UTC au format ISO
+Date	String	Date locale de la mesure (AAAA-MM-JJ)
+DateTime	String	Date et heure locale (Europe/Paris)
+temperature	Float	Température en °C
+pression	Float	Pression atmosphérique en hPa
+humidite	Float	Humidité relative en %
+point_de_rosee	Float	Température du point de rosée en °C
+visibilite	Float	Visibilité horizontale en mètres
+vent_moyen	Float	Vitesse moyenne du vent en m/s
+vent_rafales	Float	Rafales maximales du vent en m/s
+vent_direction	Integer	Direction du vent en degrés (0–360°)
+pluie_1h	Float	Cumul de pluie sur 1 heure (mm)
+pluie_3h	Float	Cumul de pluie sur 3 heures (mm)
+neige_au_sol	Float	Épaisseur de neige au sol (cm)
+nebulosite	Float	Couverture nuageuse en %
+temps_omm	String	Code OMM du temps observé
+'''
+
+### Lien entre les collections
+
+measurements.id_station ↔ stations.id
+→ Permet de relier chaque mesure à la station correspondante.
+
+Schéma logique : 1 station → plusieurs mesures
+
 
 ### Normalisation et agrégation des mesures
 
@@ -271,3 +327,4 @@ set DB_NAME="weather_db"
 
 ##  Logigramme (Mermaid)
 Voir `Logigramme_migration.png`.
+
