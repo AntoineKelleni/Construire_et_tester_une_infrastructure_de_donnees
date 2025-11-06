@@ -324,5 +324,6 @@ set DB_NAME="weather_db"
    - valeurs hors bornes (température, humidité, pression, vent)
    - couverture référentielle (mesures qui pointent vers une station connue)
 
-##  Logigramme (Mermaid)
-Voir `Logigramme_migration.png`.
+##  Logigramme 
+Voir dossier '/screenshoot/'.
+
