@@ -1,0 +1,7 @@
+flowchart TD
+    A[Sources nettoyées<br/>JSON Array] --> B[Script Python<br/>migrate_to_mongo.py]
+    B --> C{MongoDB}
+    C --> C1[Collection stations<br/>index unique: id]
+    C --> C2[Collection measurements<br/>index unique: id_station+dh_utc]
+    B --> D[Contrôle qualité]
+    D --> E[Rapport JSON<br/>taux d'erreurs,<br/>complétude,<br/>doublons,<br/>bornes,<br/>référentiel]
