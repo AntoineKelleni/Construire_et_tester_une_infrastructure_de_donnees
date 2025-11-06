@@ -1,0 +1,34 @@
+{
+  "generated_at": "2025-11-05T16:57:31.263877Z",
+  "db": "weather_db",
+  "totals": {
+    "stations": 6,
+    "measurements": 4952
+  },
+  "errors": {
+    "total_errors": 2,
+    "error_rate": 0.000404,
+    "duplicates": 0,
+    "time_order_errors": 0,
+    "out_of_range_counts": {
+      "temperature": 0,
+      "humidite": 0,
+      "pression": 0,
+      "vent_moyen": 0,
+      "vent_rafales": 0
+    },
+    "null_counts_required_fields": {
+      "id_station": 0,
+      "dh_utc": 2,
+      "DateTime": 2
+    }
+  },
+  "quality": {
+    "completeness_required_fields": {
+      "id_station": 1.0,
+      "dh_utc": 0.9995961227786753,
+      "DateTime": 0.9995961227786753
+    },
+    "referential_coverage": 1.0
+  }
+}

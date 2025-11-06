@@ -1,0 +1,76 @@
+[
+  {
+    "id": "00052",
+    "name": "Armentières",
+    "latitude": 50.689,
+    "longitude": 2.877,
+    "elevation": 16,
+    "type": "static",
+    "license": {
+      "license": "CC BY",
+      "url": "https://creativecommons.org/licenses/by/2.0/fr/",
+      "source": "infoclimat.fr",
+      "metadonnees": "https://www.infoclimat.fr/stations/metadonnees.php?id=00052"
+    }
+  },
+  {
+    "id": "000R5",
+    "name": "Bergues",
+    "latitude": 50.968,
+    "longitude": 2.441,
+    "elevation": 17,
+    "type": "static",
+    "license": {
+      "license": "CC BY",
+      "url": "https://creativecommons.org/licenses/by/2.0/fr/",
+      "source": "infoclimat.fr",
+      "metadonnees": "https://www.infoclimat.fr/stations/metadonnees.php?id=000R5"
+    }
+  },
+  {
+    "id": "07015",
+    "name": "Lille-Lesquin",
+    "latitude": 50.575,
+    "longitude": 3.092,
+    "elevation": 47,
+    "type": "synop",
+    "license": {
+      "license": "Etalab Open License",
+      "url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+      "source": "Meteo-France via infoclimat.fr",
+      "metadonnees": "https://donneespubliques.meteofrance.fr/metadonnees_publiques/fiches/fiche_59343001.pdf"
+    }
+  },
+  {
+    "id": "STATIC0010",
+    "name": "Hazebrouck",
+    "latitude": 50.734,
+    "longitude": 2.545,
+    "elevation": 31,
+    "type": "static",
+    "license": {
+      "license": "CC BY",
+      "url": "https://creativecommons.org/licenses/by/2.0/fr/",
+      "source": "infoclimat.fr",
+      "metadonnees": "https://www.infoclimat.fr/stations/metadonnees.php?id=STATIC0010"
+    }
+  },
+  {
+    "id": "ILAMAD25",
+    "name": "La Madeleine",
+    "latitude": 50.659,
+    "longitude": 3.07,
+    "elevation": 23,
+    "type": "amateur",
+    "license": null
+  },
+  {
+    "id": "IICHTE19",
+    "name": "WeerstationBS",
+    "latitude": 51.092,
+    "longitude": 2.999,
+    "elevation": 15,
+    "type": "amateur",
+    "license": null
+  }
+]
