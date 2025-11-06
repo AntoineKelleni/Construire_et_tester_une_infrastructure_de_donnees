@@ -1,0 +1,10 @@
+﻿boto3==1.40.58
+botocore==1.40.58
+pandas==2.3.0
+numpy==2.3.4
+openpyxl==3.1.5
+pytz==2025.2
+pymongo==4.15.3
+tqdm==4.67.1
+pytz==2025.2
+dnspython==2.8.0

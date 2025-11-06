@@ -129,7 +129,7 @@ def main():
 
     # Écrit le JSON (array) avec les mêmes clés que le JSON initial
     OUT_PATH.write_text(json.dumps(stations, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"\n✅ Fichier généré : {OUT_PATH}")
+    print(f"\n|||OK|||| Fichier généré : {OUT_PATH}")
     print(f"   Nombre total de stations : {len(stations)}")
     print("   (4 InfoClimat + 2 Weather Underground)")
 
